@@ -1,0 +1,18 @@
+.menu-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.screen-container{
+    display: block;
+    padding: 30px;
+    min-height: 100vh;
+    border: solid thick black;
+    border-radius: 25px;
+}
+
+.logo-mcdo{
+    width: 50px;
+}
+
