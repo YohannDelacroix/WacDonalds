@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Menu } from '../../../models/Menu'
 
 @Component({
   selector: 'app-card-product',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./card-product.component.scss']
 })
 export class CardProductComponent {
+  @Input() item!: Menu;
+  urlImage!: string;
 
+  ngOnInit(): void{
+    this.urlImage = "../../../assets/icons/" + this.item.icon;
+  }
 }

@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { CardMenuComponent } from './components/card-menu/card-menu.component';
 import { CardProductComponent } from './components/card-product/card-product.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SidebarItemComponent } from './components/sidebar/sidebar-item/sidebar-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardMenuComponent,
     CardProductComponent,
-    SidebarComponent
+    SidebarComponent,
+    SidebarItemComponent
   ],
   imports: [
     BrowserModule,

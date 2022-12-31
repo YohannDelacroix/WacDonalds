@@ -1,13 +1,22 @@
 <main class="screen-container">
-  <img src="../assets/icons/mcdonalds.png" class="logo-mcdo" />
+  <section class="select-interface">
+    <header>
+      <img src="../assets/icons/mcdonalds.png" class="logo-mcdo" />
+    </header>
+    
 
-  <p><strong>Hey, </strong><br />What's up ?</p>
+    <p><strong>Hey, </strong><br />What's up ?</p>
 
-  <div class="menu-list">
-    <app-card-menu *ngFor="let x of getMenu()" [item]="x"></app-card-menu>
-  </div>
-  
-  <app-card-product></app-card-product>
+    <div class="menu-list">
+      <app-card-menu *ngFor="let x of getMenu()" [item]="x"></app-card-menu>
+    </div>
+
+    <h2>Popular</h2>
+
+    <div class="menu-list">
+      <app-card-product *ngFor="let x of getProduct()" [item]="x"></app-card-product>
+    </div>
+  </section>
   <app-sidebar></app-sidebar>
 </main>
 

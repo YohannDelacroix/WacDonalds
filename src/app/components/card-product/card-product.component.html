@@ -1,1 +1,5 @@
-<p>card-product works!</p>
+<div class="menu-item">
+    <img class="menu-img" [src]="urlImage" />
+    <h6>{{item.name}}</h6>
+    <div class="promo" [ngClass]="{'promo-none': item.promo === null}">20% off</div>
+</div>

@@ -1,0 +1,61 @@
+.sidebar{
+    position: fixed;
+    padding: 5vh 5px;
+    top: 0;
+    bottom: 0;
+    right:0;
+    width: 30vw;
+    background-color: rgba(235, 231, 242, 0.2);
+    z-index:0;
+}
+
+.line{
+    width: 90%;
+    height:1px;
+    margin: 10px auto;
+    background-color: rgba(210, 211, 210, 0.7);
+}
+
+.sidebar header{
+    height: 12vh;
+    position: relative;
+}
+
+.sidebar footer{
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.order-list{
+    overflow: scroll;
+    max-height: 50vh;
+    min-height: 50vh;
+}
+
+.flag-style{
+    position: absolute;
+    right:20px;
+    border-radius: 25px;
+}
+
+
+.total{
+    font-weight: 100;
+    font-size: 10px;
+    line-height: 20px;
+}
+
+.button{
+    background-color: rgba(255, 175, 0, 0.7);
+    border: none;
+    border-radius: 25px;
+    padding: 30px 20px;
+    font-weight: 500;
+}
+
+footer button{
+    margin-top: 20px;
+}
