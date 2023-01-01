@@ -1,10 +1,10 @@
 <div class="menu-item">
-    <img class="menu-img" src="../../../../assets/icons/burger.svg" />
-    <span class="name">Burger</span>
-    <span class="price">$5,99</span>
+    <img class="menu-img" [src]="urlImage" />
+    <span class="name">{{item.menu.name}}</span>
+    <span class="price">${{item.menu.price}}</span>
     <div class="quantity-menu">
-        <button class="button">-</button>
-        <span>2</span>
-        <button class="button">+</button>
+        <button (click)="decrementQuantity()" class="button">-</button>
+        <span>{{item.quantity}}</span>
+        <button (click)="incrementQuantity()" class="button">+</button>
     </div>
 </div>

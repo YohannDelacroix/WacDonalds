@@ -8,18 +8,11 @@
     <div class="line"></div>
 
     <section class="order-list">
-        <app-sidebar-item></app-sidebar-item>
-        <app-sidebar-item></app-sidebar-item>
-        <app-sidebar-item></app-sidebar-item>
-        <app-sidebar-item></app-sidebar-item>
-        <app-sidebar-item></app-sidebar-item>
-
-        
+        <app-sidebar-item *ngFor="let x of basket" [item]="x"></app-sidebar-item>
     </section>
     
     <div class="line"></div>
     <footer>
-        
         <span class="total">Total</span>
         <strong class="price">$13.96</strong>
         <button class="button">Done</button>

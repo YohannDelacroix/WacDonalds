@@ -1,4 +1,4 @@
-<div class="menu-item">
+<div (click)="addItem()" class="menu-item">
     <img class="menu-img" [src]="urlImage" />
     <h6>{{item.name}}</h6>
     <div class="promo" [ngClass]="{'promo-none': item.promo === null}">20% off</div>

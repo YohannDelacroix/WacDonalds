@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import  menuJSON  from '../models/menu.json';
 import { Menu } from '../models/Menu'
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,6 +16,7 @@ export class AppComponent {
 
   }
 
+  
 
   //Get the list of menu
   getMenu(): Menu[] | null{
