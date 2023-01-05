@@ -38,3 +38,12 @@
 .promo-none{
     display: none;
 }
+
+
+@media only screen and (min-width: 937px){
+    .menu-item{
+        width: 200px;
+        height: 200px;
+        margin: 0 20px 20px 0;
+    }
+}

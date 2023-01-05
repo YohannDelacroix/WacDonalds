@@ -26,6 +26,8 @@
     height: 12vh;
 }
 
+
+
 .logo-mcdo{
     width: 50px;
     transform: rotate(180deg);
@@ -34,5 +36,18 @@
 .title{
     margin: 0 0 20px 0;
     font-size: 22px;
+}
+
+
+@media only screen and (min-width: 937px){
+    .select-interface{
+       width: auto;
+       margin-right: 200px;
+       padding-left: 6vw;
+    }
+
+    .menu-list{
+        justify-content: start;
+    }
 }
 
