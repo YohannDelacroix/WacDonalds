@@ -19,7 +19,7 @@
     padding: 5vh 20px;
     width:70vw;
     z-index:51;
-    overflow: scroll;
+    overflow: visible;
 }
 
 .select-interface header{
@@ -29,8 +29,31 @@
 
 
 .logo-mcdo{
+    display: block;
+    position: absolute;
+    top:50vh;
+    left:50vw;
     width: 50px;
-    transform: rotate(180deg);
+    
+    
+    /*transform: translate(50vw,50vh) rotate(180deg) scale(5);*/
+    transform: translate(-50%,-50%) scale(5);
+    animation: animWcDo 3s cubic-bezier(.9,-0.01,.96,.97) forwards;
+}
+
+@keyframes animWcDo{
+    0%{
+        transform: translate(-50%,-50%) scale(5);
+        opacity:0;
+    }
+    33%{
+        opacity:0.5;
+    }
+    100%{
+        transform: rotate(180deg) translate(0);
+        left: 20px;
+        top:5vh;
+    }
 }
 
 .title{
@@ -48,6 +71,12 @@
 
     .menu-list{
         justify-content: start;
+    }
+
+    .logo-mcdo{
+        position: static;
+        transform: rotate(180deg);
+        animation: none;
     }
 }
 
