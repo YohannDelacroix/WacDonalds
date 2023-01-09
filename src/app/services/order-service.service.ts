@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { TitleStrategy } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 
+
+//Service to communicate between interface and basket
 @Injectable({
   providedIn: 'root'
 })

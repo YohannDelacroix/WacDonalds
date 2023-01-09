@@ -13,6 +13,7 @@ export class CardProductComponent {
 
   constructor(private orderService: OrderServiceService){}
 
+  //add an item into the basket
   addItem(){
     this.orderService.addItemToBasket(this.item.id);
   }
