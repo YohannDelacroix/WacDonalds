@@ -11,13 +11,7 @@ export class PaymentComponent {
   previousLength: number = 0;
 
   onChangeCreditCard(): void{
-    console.log(this.credit)
-    console.log("Previous lngth ", this.previousLength);
-
-    //console.log(value.length, this.credit.length)
-
     if(this.previousLength < this.credit.length){
-      console.log("Addd")
       //console.log("length : " , this.credit.length-this.spaces);
       if((this.credit.length-this.spaces)%4 == 0){
         if(this.credit.length-this.spaces < 16){
@@ -27,12 +21,13 @@ export class PaymentComponent {
       } 
     }
     else{
-      console.log("how to remove spaces ?");
+      //If the last character removed is a space, remove the last
+      let realLength = this.credit.length - this.spaces +1;
+      if(realLength%4 == 0 && realLength < 16){
+          this.credit = this.credit.slice(0,-1);
+          this.spaces--;
+      }
     }
-
-    
-
     this.previousLength = this.credit.length;
-
   }
 }
