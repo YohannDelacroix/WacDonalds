@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; 
 import { ReactiveFormsModule } from '@angular/forms';
+import { ngxInputRegulateModule } from 'ngx-input-regulate';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +12,8 @@ import { CardProductComponent } from './components/card-product/card-product.com
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidebarItemComponent } from './components/sidebar/sidebar-item/sidebar-item.component';
 import { PaymentComponent } from './payment/payment.component';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask, IConfig} from 'ngx-mask';
+
 
 @NgModule({
   declarations: [
@@ -25,9 +28,12 @@ import { PaymentComponent } from './payment/payment.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ngxInputRegulateModule,
+    NgxMaskDirective,
+    NgxMaskPipe
   ],
-  providers: [],
+  providers: [provideNgxMask()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

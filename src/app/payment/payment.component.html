@@ -1,13 +1,25 @@
 
 <label for="ccn">Credit Card Number:</label>
-<input  id="ccn" type="tel" inputmode="numeric" 
-        pattern="[0-9\s]{13,19}" autocomplete="cc-number" 
+<!--<input  id="ccn" type="text" inputmode="numeric" 
         maxlength="19" placeholder="xxxx xxxx xxxx xxxx"
         [(ngModel)]="credit" 
         (ngModelChange)="onChangeCreditCard()"
-         />
+        (keyup)="controlCreditInput($event)"
+/>-->
 
+<input  id="ccn" type="text" inputmode="numeric" 
+        maxlength="19" placeholder="xxxx xxxx xxxx xxxx"
+        autocomplete="off"
+        mask="9999-99-99"
+/>
 
+<label for="expdate">Expires : </label>
+<input id="expdate" type="text" inputmode="numeric"
+        pattern="[0-9]*"
+        [(ngModel)]="expDate"
+        
+        />
+        
 
 
 
