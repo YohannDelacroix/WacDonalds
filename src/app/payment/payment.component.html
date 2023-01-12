@@ -1,24 +1,41 @@
-
-<label for="ccn">Credit Card Number:</label>
-<!--<input  id="ccn" type="text" inputmode="numeric" 
-        maxlength="19" placeholder="xxxx xxxx xxxx xxxx"
-        [(ngModel)]="credit" 
-        (ngModelChange)="onChangeCreditCard()"
-        (keyup)="controlCreditInput($event)"
-/>-->
-
-<input  id="ccn" type="text" inputmode="numeric" 
-        maxlength="19" placeholder="xxxx xxxx xxxx xxxx"
-        autocomplete="off"
-        mask="9999-99-99"
-/>
-
-<label for="expdate">Expires : </label>
-<input id="expdate" type="text" inputmode="numeric"
-        pattern="[0-9]*"
-        [(ngModel)]="expDate"
-        
+<form class="payment-form">
+        <label for="holder">Holder Name :</label>
+        <input id="holder" type="text" 
+                [(ngModel)]="holderName"
+                autocomplete="off"
         />
+
+
+        <label for="ccn">Credit Card Number:</label>
+        <input  id="ccn" type="text" inputmode="numeric" 
+                placeholder="xxxx xxxx xxxx xxxx"
+                [(ngModel)]="credit" 
+                [mask]="'0000-0000-0000-0000'"
+                [showMaskTyped]="true"
+                autocomplete="off"
+        />
+
+        <div>
+                <label for="expiresMonth">Month:</label>
+                <select id="expiresMonth" name="expiresMonth">
+                        <option *ngFor="let x of months" value="x">{{x}}</option>
+                </select>
+
+                <label for="expiresYear">Year</label>
+                <select id="expiresYear" name="expiresYear">
+                        <option *ngFor="let x of years" value="x">{{x}}</option>
+                </select>
+        </div>
+
+
+        <label for="cvc">CVC : </label>
+        <input id="cvc" type="text" inputmode="numeric"
+                [(ngModel)]="cvc"
+                [mask]="'000'"
+                [showMaskTyped]="true"
+                autocomplete="off"
+        />
+</form>
         
 
 
