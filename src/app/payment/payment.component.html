@@ -1,40 +1,46 @@
 <form class="payment-form">
-        <label for="holder">Holder Name :</label>
-        <input id="holder" type="text" 
+        <label class="labelHolder" for="holder">Holder Name :</label>
+        <input class="inputHolder" id="holder" type="text" 
                 [(ngModel)]="holderName"
                 autocomplete="off"
         />
 
 
-        <label for="ccn">Credit Card Number:</label>
-        <input  id="ccn" type="text" inputmode="numeric" 
+        <label class="labelCredit" for="ccn">Credit Card Number:</label>
+        <input class="inputCredit" id="ccn" type="text" inputmode="numeric" 
                 placeholder="xxxx xxxx xxxx xxxx"
                 [(ngModel)]="credit" 
-                [mask]="'0000-0000-0000-0000'"
+                [mask]="'0 0 0 0 - 0 0 0 0 - 0 0 0 0 - 0 0 0 0'"
                 [showMaskTyped]="true"
                 autocomplete="off"
         />
 
-        <div>
-                <label for="expiresMonth">Month:</label>
-                <select id="expiresMonth" name="expiresMonth">
-                        <option *ngFor="let x of months" value="x">{{x}}</option>
-                </select>
 
-                <label for="expiresYear">Year</label>
-                <select id="expiresYear" name="expiresYear">
-                        <option *ngFor="let x of years" value="x">{{x}}</option>
-                </select>
-        </div>
+                
+                        <span class="spanExpiry">Expiry Date:</span>
+                        
+                        <select class="month" id="expiresMonth" name="expiresMonth">
+                                <option *ngFor="let x of months" value="x">{{x}}</option>
+                        </select>
 
+                        
+                        <select class="year" id="expiresYear" name="expiresYear">
+                                <option *ngFor="let x of years" value="x">{{x}}</option>
+                        </select>
+                        
+                
+                
+                
+                <label class="labelCvc" for="cvc">CVC : </label>
+                        <input class="cvc" id="cvc" type="text" inputmode="numeric"
+                                [(ngModel)]="cvc"
+                                [mask]="'0 0 0'"
+                                [showMaskTyped]="true"
+                                autocomplete="off"
+                        />
 
-        <label for="cvc">CVC : </label>
-        <input id="cvc" type="text" inputmode="numeric"
-                [(ngModel)]="cvc"
-                [mask]="'000'"
-                [showMaskTyped]="true"
-                autocomplete="off"
-        />
+                <button type="submit" class="pay">Pay</button>
+                
 </form>
         
 
