@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { OrderServiceService } from '../services/order-service.service';
 
 @Component({
   selector: 'app-payment',
@@ -10,18 +11,19 @@ export class PaymentComponent {
   cvc!: string;
   expDate!: string;
   holderName!: string;
-  total!: number;
+  @Input() total!: number;
+  @Output() cancel = new EventEmitter();
 
   months: number[] = Array.from(Array(12+1).keys());
   years: number[] = []; 
+
+  constructor(private orderService: OrderServiceService){}
 
   ngOnInit(){
     console.log(new Date().getFullYear())
     for(let i = new Date().getFullYear() - 1; i < new Date().getFullYear() + 20; i++){
       this.years.push(i);
     }
-
-    this.total = 86.50;
 
 
     let executeTime = 2000 / this.total;
@@ -33,5 +35,14 @@ export class PaymentComponent {
         this.total += 0.01;
       }, executeTime);
     }
+  }
+
+  handleCancel(){
+    this.cancel.emit();
+  }
+
+  handlePay(){
+    this.orderService.clearBasket();
+    this.cancel.emit();
   }
 }

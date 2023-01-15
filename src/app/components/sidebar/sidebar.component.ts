@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import  menuJSON  from '../../../models/menu.json';
 import { Menu } from '../../../models/Menu'
 import { OrderServiceService } from 'src/app/services/order-service.service';
 import { of, Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-sidebar',
@@ -13,9 +14,12 @@ export class SidebarComponent {
   basket: {menu: Menu, quantity: number}[] = [];
   totalPrice: number = 0;
 
+  @Output() pay = new EventEmitter<number>();
+
   addItemSubscription!:Subscription;
   deleteItemSubscription!:Subscription;
   updatePriceSubscription!: Subscription;
+  clearBasketSubscription!: Subscription;
   constructor(private orderService: OrderServiceService){
     this.addItemSubscription = this.orderService.getItemFromInterface().subscribe((id) => {
       this.addItem(id);
@@ -27,6 +31,10 @@ export class SidebarComponent {
 
     this.updatePriceSubscription = this.orderService.obsUpdatePrice().subscribe((amount) => {
       this.updateTotalPrice(amount);
+    })
+
+    this.clearBasketSubscription = this.orderService.obsClearBasket().subscribe( () => {
+      this.clearBasket();
     })
   }
 
@@ -74,5 +82,15 @@ export class SidebarComponent {
   //Update the total price
   updateTotalPrice(amount: number){
     this.totalPrice += amount;
+  }
+
+
+  handleDone(){
+    this.pay.emit(this.totalPrice);
+  }
+
+  clearBasket(){
+    this.basket = [];
+    this.totalPrice = 0;
   }
 }

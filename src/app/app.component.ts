@@ -11,6 +11,8 @@ import { Menu } from '../models/Menu'
 export class AppComponent {
   title = 'wacdonalds';
   menu: Menu[] = menuJSON;
+  paying: boolean = false;
+  totalPrice!: number;
 
   ngOnInit(){
 
@@ -26,5 +28,17 @@ export class AppComponent {
   //Get the list of products
   getProduct(): Menu[] | null{
     return this.menu.filter(item => item.cat === "product")
+  }
+
+  //When the done button is clicked on the sidebar
+  paymentRequest(price: number){
+    console.log("Requesting payment of ", price);
+    this.paying = true;
+    this.totalPrice = price;
+  }
+
+  //When the cancel button is pressed on the payment interface
+  cancelRequest(){
+    this.paying = false;
   }
 }

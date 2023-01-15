@@ -1,6 +1,6 @@
 <main class="screen-container">
  
-  <app-payment class="payment-interface"></app-payment>
+  <app-payment *ngIf="paying" (cancel)="cancelRequest()" [total]="totalPrice" class="payment-interface"></app-payment>
   
 
   <section class="select-interface">
@@ -21,6 +21,6 @@
       <app-card-product *ngFor="let x of getProduct()" [item]="x"></app-card-product>
     </div>
   </section>
-  <app-sidebar></app-sidebar>
+  <app-sidebar (pay)="paymentRequest($event)"></app-sidebar>
 </main>
 

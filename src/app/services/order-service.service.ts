@@ -11,6 +11,7 @@ export class OrderServiceService {
   private newItem = new Subject<any>();
   private deleteItem = new Subject<any>();
   private updatePrice = new Subject<any>();
+  private clear = new Subject<any>();
 
 
   /*    ADD AN ITEM TO BASKET     */
@@ -41,5 +42,15 @@ export class OrderServiceService {
   }
   obsUpdatePrice(){
     return this.updatePrice.asObservable();
+  }
+
+
+  /* AFTER PAYMENT, CLEAR THE BASKET */
+  clearBasket(){
+    this.clear.next(null);
+  }
+
+  obsClearBasket(){
+    return this.clear.asObservable();
   }
 }
