@@ -1,51 +1,89 @@
-<form class="payment-form">
+<form class="payment-form" (submit)="handlePay()">
         
         <div class="total">
                 <span class="totalLabel">Total :</span>
                 <span class="totalAmount">{{total | currency:'USD'}}</span>
         </div>
 
-        <label class="labelHolder" for="holder">Holder Name :</label>
-        <input class="inputHolder" id="holder" type="text" name="holderName"
+        <div class="labelHolder">
+                <label class="labelHolder" for="holder">Holder Name :</label>
+                <div *ngIf="holder.invalid && (holder.touched)">
+                        <div class="error" *ngIf="holder.errors?.['required']">Holder name missing</div>
+                </div>
+        </div>
+        <input class="inputHolder" [ngClass]="{'input-error': holder.invalid && holder.touched}" id="holder" type="text" name="holderName"
                 [(ngModel)]="holderName"
                 autocomplete="off"
+                #holder="ngModel"
+                required
         />
 
-
-        <label class="labelCredit" for="ccn">Credit Card Number:</label>
-        <input class="inputCredit" id="ccn" type="text" inputmode="numeric" name="ccn"
-                placeholder="xxxx xxxx xxxx xxxx"
-                [(ngModel)]="credit" 
-                [mask]="'0 0 0 0 - 0 0 0 0 - 0 0 0 0 - 0 0 0 0'"
-                [showMaskTyped]="true"
-                autocomplete="off"
-        />
-
+        <div class="labelCredit">
+                <label class="labelCredit" for="ccn">Credit Card Number:</label>
+                <div *ngIf="ccn.invalid && (ccn.dirty || ccn.touched)">
+                        <div class="error" *ngIf="ccn.errors?.['required']">Card number missing</div>
+                        <div class="error" *ngIf="ccn.errors?.['minlength']">The credit card number must have 16 digits</div>
+                </div>
+        </div>
+                
+                <input class="inputCredit" [ngClass]="{'input-error': ccn.invalid && ccn.touched}" id="ccn" type="text" inputmode="numeric" name="ccn"
+                        placeholder="xxxx xxxx xxxx xxxx"
+                        [(ngModel)]="credit" 
+                        [mask]="'0 0 0 0 - 0 0 0 0 - 0 0 0 0 - 0 0 0 0'"
+                        [showMaskTyped]="true"
+                        autocomplete="off"
+                        minlength="16"
+                        required
+                        #ccn="ngModel"
+                />
+        
 
                 
-                        <span class="spanExpiry">Expiry Date:</span>
                         
-                        <select class="month" id="expiresMonth" name="expiresMonth">
+
+                        <div class="spanExpiry">
+                                <span >Expiry Date:</span>
+                                <div>
+                                        <div class="error" *ngIf="month === ''">Month missing</div>
+                                        <div class="error" *ngIf="year === 0">Year missing</div>
+                                </div>
+                        </div>
+                        
+                        <select class="month" id="expiresMonth" name="expiresMonth"
+                                [(ngModel)]="month" required>
+                                <option disabled selected value></option>
                                 <option *ngFor="let x of months" value="x">{{x}}</option>
                         </select>
 
                         
-                        <select class="year" id="expiresYear" name="expiresYear">
+                        <select class="year" id="expiresYear" name="expiresYear"
+                                [(ngModel)]="year" required>
+                                <option disabled selected value></option>
                                 <option *ngFor="let x of years" value="x">{{x}}</option>
                         </select>
                         
                 
                 
+                <div class="labelCvc">
+                        <label for="cvc">CVC : </label>
+                        <!--<div *ngIf="cvc.invalid && (cvc.dirty || cvc.touched)">
+                                <div class="error" *ngIf="cvc.errors?.['required']">CVC missing</div>
+                                <div class="error" *ngIf="cvc.errors?.['minlength']">CVC must have 3 digits</div>
+                        </div>-->
+                </div>
                 
-                <label class="labelCvc" for="cvc">CVC : </label>
                         <input class="cvc" id="cvc" type="text" inputmode="numeric" name="cvc"
+                        
                                 [(ngModel)]="cvc"
                                 [mask]="'0 0 0'"
                                 [showMaskTyped]="true"
                                 autocomplete="off"
+                                minlength="3"
+                                required
+                                
                         />
 
-                <button type="submit" class="pay" (click)="handlePay()">Pay</button>
+                <button type="submit" class="pay">Pay</button>
                 <button class="close" (click)="handleCancel()">Cancel</button>
 </form>
         

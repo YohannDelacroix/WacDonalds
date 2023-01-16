@@ -11,7 +11,7 @@ import { Menu } from '../models/Menu'
 export class AppComponent {
   title = 'wacdonalds';
   menu: Menu[] = menuJSON;
-  paying: boolean = false;
+  paying: boolean = true;
   totalPrice!: number;
 
   ngOnInit(){
