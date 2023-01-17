@@ -27,7 +27,6 @@
         </div>
                 
                 <input class="inputCredit" [ngClass]="{'input-error': ccn.invalid && ccn.touched}" id="ccn" type="text" inputmode="numeric" name="ccn"
-                        placeholder="xxxx xxxx xxxx xxxx"
                         [(ngModel)]="credit" 
                         [mask]="'0 0 0 0 - 0 0 0 0 - 0 0 0 0 - 0 0 0 0'"
                         [showMaskTyped]="true"
@@ -66,25 +65,31 @@
                 
                 <div class="labelCvc">
                         <label for="cvc">CVC : </label>
-                        <!--<div *ngIf="cvc.invalid && (cvc.dirty || cvc.touched)">
-                                <div class="error" *ngIf="cvc.errors?.['required']">CVC missing</div>
-                                <div class="error" *ngIf="cvc.errors?.['minlength']">CVC must have 3 digits</div>
-                        </div>-->
+                        <div *ngIf="!cvcValid">
+                                <div class="error" *ngIf="!cvcValid">CVC missing</div>
+                                
+                        </div>
+                        
                 </div>
                 
-                        <input class="cvc" id="cvc" type="text" inputmode="numeric" name="cvc"
-                        
+                        <input class="cvc" id="cvc" type="text" 
+                                inputmode="numeric" 
+                                name="cvc"
                                 [(ngModel)]="cvc"
                                 [mask]="'0 0 0'"
                                 [showMaskTyped]="true"
                                 autocomplete="off"
                                 minlength="3"
                                 required
-                                
+                                (input)="validCVC()"
                         />
 
-                <button type="submit" class="pay">Pay</button>
+                        
+
+                <button type="submit" [disabled]="holder.invalid || ccn.invalid || month === '' || year === 0 || !cvcValid" class="pay">Pay</button>
                 <button class="close" (click)="handleCancel()">Cancel</button>
+
+                
 </form>
         
 

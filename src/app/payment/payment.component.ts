@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OrderServiceService } from '../services/order-service.service';
 
 @Component({
@@ -18,6 +19,9 @@ export class PaymentComponent {
 
   months: string[] = ["01","02","03","04","05","06","07","08","09","10","11","12"];
   years: number[] = []; 
+
+  cvcValid: boolean = false;
+ 
 
   constructor(private orderService: OrderServiceService){}
 
@@ -49,5 +53,9 @@ export class PaymentComponent {
   }
 
 
+  validCVC(){
+    if(this.cvc.length != 3) this.cvcValid = false;
+    else this.cvcValid = true;
+  }
 
 }
