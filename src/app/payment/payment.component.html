@@ -43,19 +43,24 @@
                         <div class="spanExpiry">
                                 <span >Expiry Date:</span>
                                 <div>
-                                        <div class="error" *ngIf="month === ''">Month missing</div>
-                                        <div class="error" *ngIf="year === 0">Year missing</div>
+                                        <span>test</span>
+                                        <div class="error" *ngIf="monthTouched && month === ''">Month missing</div>
+                                        <div class="error" *ngIf="yearTouched && year === 0">Year missing</div>
                                 </div>
                         </div>
                         
                         <select class="month" id="expiresMonth" name="expiresMonth"
+                                [ngClass]="{'input-error': month === '' && monthTouched}"
+                                (blur)="monthTouched = true"
                                 [(ngModel)]="month" required>
                                 <option disabled selected value></option>
-                                <option *ngFor="let x of months" value="x">{{x}}</option>
+                                <option [ngClass]="{'input-error': month === '' && monthTouched}" 
+                                        *ngFor="let x of months" value="x">{{x}}</option>
                         </select>
 
                         
                         <select class="year" id="expiresYear" name="expiresYear"
+                                (blur)="yearTouched = true"
                                 [(ngModel)]="year" required>
                                 <option disabled selected value></option>
                                 <option *ngFor="let x of years" value="x">{{x}}</option>
@@ -65,14 +70,15 @@
                 
                 <div class="labelCvc">
                         <label for="cvc">CVC : </label>
-                        <div *ngIf="!cvcValid">
-                                <div class="error" *ngIf="!cvcValid">CVC missing</div>
-                                
+                        <div *ngIf="!cvcValid && cvcTouched">
+                                <div class="error" *ngIf="!cvcValid && cvcRequired">CVC must have 3 digits</div>
+                                <div class="error" *ngIf="!cvcRequired">CVC missing</div>
                         </div>
                         
                 </div>
                 
                         <input class="cvc" id="cvc" type="text" 
+                                [ngClass]="{'input-error': !cvcValid && cvcTouched}"
                                 inputmode="numeric" 
                                 name="cvc"
                                 [(ngModel)]="cvc"
@@ -82,6 +88,7 @@
                                 minlength="3"
                                 required
                                 (input)="validCVC()"
+                                (blur)="cvcTouched = true"
                         />
 
                         

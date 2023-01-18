@@ -17,10 +17,17 @@ export class PaymentComponent {
   @Input() total!: number;
   @Output() cancel = new EventEmitter();
 
+
   months: string[] = ["01","02","03","04","05","06","07","08","09","10","11","12"];
   years: number[] = []; 
+  monthValid: boolean = false;
+  yearValid: boolean = false;
+  monthTouched: boolean = false;
+  yearTouched: boolean = false;
 
   cvcValid: boolean = false;
+  cvcTouched: boolean = false;
+  cvcRequired: boolean = false;
  
 
   constructor(private orderService: OrderServiceService){}
@@ -53,9 +60,18 @@ export class PaymentComponent {
   }
 
 
+  //Check if the CVC is valid
   validCVC(){
-    if(this.cvc.length != 3) this.cvcValid = false;
+    this.cvcTouched= true;
+    if(this.cvc.length != 3) {
+      this.cvcValid = false;
+      if(this.cvc.length > 0){
+        this.cvcRequired = true;
+      }
+      else this.cvcRequired = false;
+    }
     else this.cvcValid = true;
   }
+
 
 }
