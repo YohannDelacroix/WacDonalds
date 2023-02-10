@@ -73,5 +73,8 @@ export class PaymentComponent {
     else this.cvcValid = true;
   }
 
+  expiryDateChange(){
+    
+  }
 
 }

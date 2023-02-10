@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 .sidebar{
     position: fixed;
     padding: 5vh 5px;
@@ -24,9 +31,16 @@
 
 .sidebar footer{
     height: 20vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     overflow: hidden;
 }
 
@@ -65,6 +79,8 @@ footer button{
 @media only screen and (min-width: 937px){
     .sidebar{
        width: 200px;
+       -webkit-transition: width 0.2s;
+       -o-transition: width 0.2s;
        transition: width 0.2s;
     }
 }

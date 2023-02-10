@@ -1,8 +1,23 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 .menu-list{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     margin-bottom: 20px;
 }
 
@@ -28,15 +43,24 @@
 
 
 .payment-interface{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     position: fixed;
     background-color: rgba(210, 211, 210, 0.9);
     width: 100vw;
     height: 100vh;
     z-index: 800000;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 
@@ -49,20 +73,42 @@
     
     
     /*transform: translate(50vw,50vh) rotate(180deg) scale(5);*/
-    transform: translate(-50%,-50%) scale(5);
-    animation: animWcDo 3s cubic-bezier(.9,-0.01,.96,.97) forwards;
+    -webkit-transform: translate(-50%,-50%) scale(5);
+        -ms-transform: translate(-50%,-50%) scale(5);
+            transform: translate(-50%,-50%) scale(5);
+    -webkit-animation: animWcDo 3s cubic-bezier(.9,-0.01,.96,.97) forwards;
+            animation: animWcDo 3s cubic-bezier(.9,-0.01,.96,.97) forwards;
 }
 
-@keyframes animWcDo{
+@-webkit-keyframes animWcDo{
     0%{
-        transform: translate(-50%,-50%) scale(5);
+        -webkit-transform: translate(-50%,-50%) scale(5);
+                transform: translate(-50%,-50%) scale(5);
         opacity:0;
     }
     33%{
         opacity:0.5;
     }
     100%{
-        transform: rotate(180deg) translate(0);
+        -webkit-transform: rotate(180deg) translate(0);
+                transform: rotate(180deg) translate(0);
+        left: 20px;
+        top:5vh;
+    }
+}
+
+@keyframes animWcDo{
+    0%{
+        -webkit-transform: translate(-50%,-50%) scale(5);
+                transform: translate(-50%,-50%) scale(5);
+        opacity:0;
+    }
+    33%{
+        opacity:0.5;
+    }
+    100%{
+        -webkit-transform: rotate(180deg) translate(0);
+                transform: rotate(180deg) translate(0);
         left: 20px;
         top:5vh;
     }
@@ -82,13 +128,18 @@
     }
 
     .menu-list{
-        justify-content: start;
+        -webkit-box-pack: start;
+            -ms-flex-pack: start;
+                justify-content: start;
     }
 
     .logo-mcdo{
         position: static;
-        transform: rotate(180deg);
-        animation: none;
+        -webkit-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+                transform: rotate(180deg);
+        -webkit-animation: none;
+                animation: none;
     }
 }
 
